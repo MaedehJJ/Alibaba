@@ -4,7 +4,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-
 object NetworkFramework {
     private val loggingInterceptor = HttpLoggingInterceptor { Timber.tag("OkHttp").d(it) }
         .apply { level = HttpLoggingInterceptor.Level.BODY }

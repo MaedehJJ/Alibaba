@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Alibaba</string>
+    <string name="user_welcome">Welcome Back!</string>
+    <string name="user_description">Here to help you keep on move. Where do you want to travel?</string>
+    <string name="user_descriptionHint">Description</string>
+    <string name="user_letsGo">Let\'s go</string>
+    <string name="user_fullName">%1$s %2$s</string>
+    <string name="user_topUsers">Top users</string>
 </resources>
