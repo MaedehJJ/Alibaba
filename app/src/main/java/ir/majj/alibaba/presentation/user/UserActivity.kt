@@ -13,25 +13,36 @@ import ir.majj.alibaba.presentation.search.SearchActivity
 
 
 class UserActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityUserBinding
-    lateinit var viewModel: UserViewModel
+    private var binding: ActivityUserBinding? = null
+    private var viewModel: UserViewModel? = null
     private val adapter = UsersAdapter()
+
+    private val textWatcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            binding?.apply {
+                val destination: String = descriptionField.text.toString()
+                letsGo.isEnabled = destination.isNotEmpty()
+            }
+        }
+
+        override fun afterTextChanged(s: Editable) {}
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
         viewModel = ViewModelProvider(this, UserViewModelFactory())[UserViewModel::class.java]
         setUpDecorations()
 
         setUpData()
-        viewModel.loadUsers()
+        viewModel?.loadUsers()
     }
 
     private fun setUpDecorations() {
-        binding.apply {
+        binding?.apply {
             val destination = intent.getStringExtra(EXTRA_DESTINATION)
             if (destination != null && destination.isNotEmpty()) {
                 descriptionField.setText(destination)
@@ -39,31 +50,17 @@ class UserActivity : AppCompatActivity() {
             usersList.adapter = adapter
             letsGo.setOnClickListener {
                 val destinationText = descriptionField.text.toString()
-                let {
-                    val intent = SearchActivity.getOpenIntent(this@UserActivity, destinationText)
-                    startActivity(intent)
-                }
+                val intent = SearchActivity.getOpenIntent(this@UserActivity, destinationText)
+                startActivity(intent)
             }
             descriptionField.addTextChangedListener(textWatcher)
         }
     }
 
     private fun setUpData() {
-        viewModel.users.observe(this) {
+        viewModel?.users?.observe(this) {
             adapter.addItems(it)
         }
-    }
-
-    private val textWatcher: TextWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            binding.apply {
-                val destination: String = descriptionField.text.toString()
-                letsGo.isEnabled = destination.isNotEmpty()
-            }
-        }
-
-        override fun afterTextChanged(s: Editable) {}
     }
 
     companion object {

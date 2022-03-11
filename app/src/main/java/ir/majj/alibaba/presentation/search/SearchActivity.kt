@@ -16,14 +16,27 @@ import org.joda.time.LocalDate
 
 class SearchActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySearchBinding
+    private var binding: ActivitySearchBinding? = null
+
+    private val textWatcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            binding?.apply {
+                val from = fromField.text.toString()
+                val to = toField.text.toString()
+                search.isEnabled = from.isNotEmpty() && to.isNotEmpty()
+            }
+        }
+
+        override fun afterTextChanged(s: Editable) {}
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
-        binding.apply {
+        binding?.apply {
             fromField.addTextChangedListener(textWatcher)
             toField.addTextChangedListener(textWatcher)
             toolbar.back.setOnClickListener { onBackPressed() }
@@ -32,21 +45,8 @@ class SearchActivity : AppCompatActivity() {
         setUpDestination()
     }
 
-    private val textWatcher: TextWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            binding.apply {
-                val from: String = fromField.text.toString()
-                val to: String = toField.text.toString()
-                search.isEnabled = from.isNotEmpty() && to.isNotEmpty()
-            }
-        }
-
-        override fun afterTextChanged(s: Editable) {}
-    }
-
     private fun setUpDestination() {
-        binding.apply {
+        binding?.apply {
             val destination = intent.getStringExtra(EXTRA_DESTINATION)
             if (destination != null && destination.isNotEmpty()) {
                 toField.setText(destination)
@@ -60,7 +60,7 @@ class SearchActivity : AppCompatActivity() {
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setInputMode(INPUT_MODE_CALENDAR).build()
 
-        binding.apply {
+        binding?.apply {
             chooseDate.setOnClickListener {
                 datePicker.show(supportFragmentManager, DATE_PICKER_TAG)
             }

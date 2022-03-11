@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_accent"
+    android:background="@color/accent"
     tools:context=".presentation.search.SearchActivity">
 
     <include
@@ -58,7 +58,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="@string/search_chooseDate"
-        android:textColor="@color/white"
+        android:textColor="@color/accent"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="@string/search_search"
-        android:textColor="@color/white"
+        android:textColor="@color/accent"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

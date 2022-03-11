@@ -29,8 +29,9 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
     override fun getItemCount() = users.size
 
     fun addItems(users: List<User>) {
+        val oldSize = this.users.size
         this.users.addAll(users)
-        notifyItemInserted(users.size)
+        notifyItemRangeInserted(oldSize, users.size)
     }
 
     inner class UsersViewHolder(itemView: View) :
