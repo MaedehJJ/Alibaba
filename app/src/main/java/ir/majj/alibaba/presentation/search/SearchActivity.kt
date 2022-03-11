@@ -62,6 +62,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding?.apply {
             chooseDate.setOnClickListener {
+                it.isEnabled = false
                 datePicker.show(supportFragmentManager, DATE_PICKER_TAG)
             }
 
@@ -74,8 +75,10 @@ class SearchActivity : AppCompatActivity() {
                     date.year.toString()
                 )
                 chosenDate.visibility = View.VISIBLE
+                chooseDate.isEnabled = true
                 datePicker.dismiss()
             }
+            datePicker.addOnDismissListener { chooseDate.isEnabled = true }
         }
     }
 
