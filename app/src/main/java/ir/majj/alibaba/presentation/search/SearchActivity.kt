@@ -70,7 +70,7 @@ class SearchActivity : AppCompatActivity() {
                 chosenDate.text = getString(
                     R.string.search_dateFormat,
                     date.dayOfMonth.toString(),
-                    date.monthOfYear.toString(),
+                    date.monthOfYear().asShortText,
                     date.year.toString()
                 )
                 chosenDate.visibility = View.VISIBLE
