@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_accent.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/bg_button_blue.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_button_disabled.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_button_enabled.xml" value="0.1" />
