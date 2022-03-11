@@ -4,10 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_button_blue.xml" value="0.2025" />
+        <entry key="app/src/main/res/drawable/bg_button_disabled.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_button_enabled.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_edit_text_disabled.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_edit_text_enabled.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_shadow.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_toolbar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_user_list_item.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_welcome.xml" value="0.2025" />
+        <entry key="app/src/main/res/drawable/selector_edit_text.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/selector_main_button.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_user.xml" value="0.33" />
         <entry key="app/src/main/res/layout/user_list_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/view_toolbar_with_back.xml" value="0.37146529562982006" />
       </map>
     </option>
   </component>
