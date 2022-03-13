@@ -27,5 +27,4 @@ class APICallback<T>(
         Timber.d(t)
         failure()
     }
-
 }
